@@ -17,12 +17,11 @@ public class AlunoController {
     }
     @PostMapping
     public Aluno addStudent(@RequestBody Aluno aluno){
-        return alunoRepository.save(aluno);
+        return this.alunoRepository.save(aluno);
     }
 
-    @GetMapping
-    public Aluno getAluno(@RequestBody Long id){
-        Optional<Aluno> temp = alunoRepository.findById(id);
-        return temp.get();
+    @GetMapping("{id}")
+    public Aluno getAluno(@PathVariable Long id){
+        return this.alunoRepository.findById(id).get();
     }
 }
